@@ -27,7 +27,7 @@ export class EchoServer {
         this.defaultOptions  = options;
 
         if(config) {
-            this.options = Object.assign(this.defaultOptions, config);
+            this.options = Object.assign({}, this.defaultOptions, config);
         } else {
             this.options = this.defaultOptions;
         }
