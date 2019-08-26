@@ -1,11 +1,5 @@
-
-
 var http = require('http');
-
 var express = require('express');
-
-
-
 const os = require("os");
 
 export class Server {
@@ -22,7 +16,6 @@ export class Server {
     /** id representing server instance */
     protected server_id: any;
 
-
     /**
      * Create a new server instance.
      */
@@ -37,11 +30,12 @@ export class Server {
      */
     init(): Promise<any> {
         console.log(`INIT: Server_ID: ${this.server_id}, PORT: ${this.options.port}`);
+        console.log('-----------------------------------------');
         return new Promise((resolve, reject) => {
             debugger;
             this.serverProtocol().then(instance => {
                 debugger;
-                console.log(`ServerProtocol Resolved: Server_ID: ${this.server_id}; PORT: ${this.options.port}`);
+                console.log(`ServerProtocol: Server_ID: ${this.server_id}; PORT: ${this.options.port}`);
                 resolve();
             }, error => reject(error));
         });
@@ -55,8 +49,6 @@ export class Server {
     serverProtocol(): Promise<any> {
         return this.httpServer()
     }
-
-
 
     /**
      * Express socket.io server.
@@ -76,7 +68,7 @@ export class Server {
 
             function cb() {
                 debugger;
-                console.log(`CALLBACK: Server_ID: ${this.server_id}, PORT: ${this.options.port}`)
+                console.log(`Callback: Server_ID: ${this.server_id}, PORT: ${this.options.port}`)
                 return resolve.call(this, this)
             }
 
